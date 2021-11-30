@@ -1,5 +1,4 @@
 import pandas as pd 
-from flask import jsonify
 import os, requests
 
 dir = os.path.dirname(__file__)
@@ -7,7 +6,6 @@ dir = os.path.dirname(__file__)
 def country_data(country_code):
     datafile = pd.read_csv(os.path.join(dir, 'data.csv'), index_col='Code')
     result = datafile.loc[country_code]
-    #print(result)
     return result.to_dict()
 
 
