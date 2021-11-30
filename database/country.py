@@ -15,9 +15,6 @@ def get_country_code(ipaddr):
     try:
         url = 'https://stat.ripe.net/data/whois/data.json?resource={}'.format(ipaddr)
         response = requests.get(url).json()['data']['records'][0]
-        #print(response)
-        #len(response)
-        #return response
     except:
         country_code = 'private'
         return country_code
