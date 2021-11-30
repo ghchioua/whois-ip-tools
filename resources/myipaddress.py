@@ -25,7 +25,6 @@ class MYIP(MethodResource, Resource):
     def get(self):
         result = {}
         ipaddr = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
-        #all_info = geolocation(ipaddr)
         result['ip'] = ipaddr
         country_code = get_country_code(ipaddr)
         country_data = cdata(country_code)
@@ -34,8 +33,3 @@ class MYIP(MethodResource, Resource):
         result['country'] = country_data['Name']
         logger_visits.info("IP address: {}, Country: {}".format(ipaddr, country_data['Name']))
         return result
-
-def geolocation(ipaddr):
-    url = "https://geolocation-db.com/json/{}&position=true".format(ipaddr)
-    geoloc = requests.get(url).json()
-    return geoloc
