@@ -22,7 +22,6 @@ def get_country_code(ipaddr):
         for dct in response:
             if dct['key'] == 'country':
                 country_code = dct['value']
-                #print(country_code)
         return country_code
     except:
         country_code = 'private'
